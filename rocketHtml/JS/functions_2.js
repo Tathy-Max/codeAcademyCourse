@@ -1,3 +1,16 @@
+function createPhrases() {
+	console.log('Study is good');
+	console.log('Be patient and consistent');
+	console.log('Review is the mother of wisdow');
+}
+//Calling the function
+createPhrases();
+
+// Why use functions:
+// Agrupar um bloco de codigo
+// Reutilizacao do codigo
+// Dar significado ao codigo, explicar o codigo
+
 // Function expression or function anonymous
 const sum = function (number1, number2) {
 	//number1 and number2 are parameters
@@ -248,3 +261,77 @@ letters.forEach((item) => {
 	}
 });
 console.log(count);
+
+// Given a year, return the century it is in. The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200, etc
+
+function giveCentury(year) {
+	let century = 0;
+	while (year > 0) {
+		year = year - 100;
+		century = century + 1;
+		// console.log(century);
+	}
+	return century;
+}
+console.log(giveCentury(2022));
+
+// Given the string, check if it is a palindrome
+
+function isPalindrome(inputString) {
+	inputString = inputString.toLowerCase().replace(/\W/g, '');
+	console.log(inputString);
+	for (let i = 0; i < inputString.length; i += 1) {
+		if (inputString[i] !== inputString[inputString.length - 1 - i]) {
+			return false;
+		}
+	}
+	return true;
+}
+console.log(isPalindrome('I did, Did I?'));
+
+//Given an array of integers, find the pair of adjacent elements that has the largest product and return that product
+inputArray = [3, 6, -2, -5, 7, 3];
+
+function productMax(inputArray) {
+	let maxProduct = inputArray[0] * inputArray[1];
+	for (let i = 1; i < inputArray.length; i++) {
+		product = inputArray[i] * inputArray[i + 1];
+		if (product > maxProduct) maxProduct = product;
+	}
+	return maxProduct;
+}
+console.log(productMax(inputArray));
+
+//Object destructuring
+
+const user = {
+	firstName: 'Tathy',
+	idade: '24',
+	address: {
+		street: 'Dalhousie dr',
+		number: '176',
+	},
+};
+const firstName = user.firstName; //normal
+const { address, idade: age, nickname = 'Max' } = user; //destructured
+
+//rest operator
+const { firtsName, ...rest } = user; // ira trazer todo o resto menos o firstName
+
+//Promisses
+const sumTwoNumbers = (a, b) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(a + b);
+			reject(a - b);
+		}, 2000);
+	});
+};
+
+sumTwoNumbers(1, 3)
+	.then((sum) => {
+		console.log(sum);
+	})
+	.catch((err) => {
+		console.log(err);
+	});
