@@ -1,0 +1,45 @@
+// 1. Declare uma variavel
+let weight;
+//2. Que tipo de dado e a variavel acima
+console.log(typeof weight);
+//3. Declare uma variavel e atribua valores para cada um dos dados:
+const name = 'Tathy';
+const age = 44;
+const stars = 4.9;
+const isSubscribed = true;
+//4. A variavel let student = {} e de que tipo de dado? Object
+//4.1 Atribua a ela as mesmas propriedades e valores do exercicio 3
+let student = {
+	name: 'Tathy',
+	age: 44,
+	stars: 4.9,
+	isSubscribed: true,
+};
+//4.2 Mostre no console a seguinte mensagem: <name> de idade <age> pesa <weight> pelos valores de cada propriedade do objeto
+console.log(
+	`${student.name} de idade ${student.age} tem ${student.stars} stars`
+);
+//5. Declare uma variavel do tipo Array, de nome students e atribua a ela nenhum valor, ou seja, somente o array vazio
+let students = [];
+//6. Reatribua valor para a variavel acima, colocando dentro dela o objeto student da questao 4
+students = [student];
+//7.Coloque no console o valor da posicao zero do Array acima
+console.log(students[0]);
+//8. Crie um novo student e coloque na posicao 1 do Array students
+const john = {
+	name: 'John',
+	age: 46,
+	stars: 4.7,
+	isSubscribed: false,
+};
+students = [student, john]; //OR
+students[1] = john;
+console.log(students);
+//9. Mostre o que acontece com o valor da variavel de acordo com o hoisting no codigo abaixo:
+console.log(a);
+var a = 1;
+//Resposta
+var a;
+console.log(a); // resultado undefined
+a = 1;
+console.log(a); // resultado 1

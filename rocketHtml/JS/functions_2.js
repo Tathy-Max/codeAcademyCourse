@@ -227,6 +227,7 @@ let strArr = ['1, 3, 4, 7, 13', '1, 2, 4, 13, 15'];
 
 function FindIntersection(strArr) {
 	const lists = strArr.map((str) => str.split(', '));
+	console.log(lists);
 
 	const firstList = lists[0];
 	const secondList = lists[1];
@@ -248,7 +249,7 @@ function FindIntersection(strArr) {
 }
 console.log(FindIntersection(strArr));
 
-// Count how many of each letter in on the array
+// Count how many of each letter is on the array
 let letters = ['a', 'b', 'c', 'd', 'a', 'a', 'b'];
 
 let count = {};
@@ -335,3 +336,45 @@ sumTwoNumbers(1, 3)
 	.catch((err) => {
 		console.log(err);
 	});
+
+// Given two strings - pattern and source
+// The string pattern contains only the symbols 0 and 1, and the string source contains only lowercase English letters.
+// Matches have to follow three conditions are met:
+// equal length,
+// for each 0 in pattern the corresponding letter in the substring is a vowel,
+// for each 1 in pattern the corresponding letter is a consonant
+
+function matchStrings(pattern, source) {
+	let subStrings = source.split('');
+	console.log(subStrings);
+	let arrayInBinary = [];
+
+	for (let char of subStrings) {
+		if (/[aeiouy]/.test(char) === true) {
+			arrayInBinary.push(0);
+		} else if (/[bcdfghjklmnpqrstvwxz]/.test(char) === true) {
+			arrayInBinary.push(1);
+		} else {
+			arrayInBinary.push(' ');
+		}
+	}
+	let countMatches = 0;
+	let string = arrayInBinary.join('');
+	console.log(string);
+	let substring = pattern;
+	console.log(substring);
+
+	for (let i = 0; i < string.length; i++) {
+		for (let j = 0; j < substring.length; j++) {
+			if (substring[j] !== string[i + j]) {
+				break;
+			}
+			if (j === substring.length - 1) {
+				countMatches++;
+				console.log(countMatches);
+			}
+		}
+	}
+	return countMatches;
+}
+matchStrings('010', 'love');
