@@ -46,7 +46,7 @@
 				height: 30px;
 				margin: 5px;
 				font-size: 25px;
-				color: black;
+				color: blueviolet;
 				text-align: right;
 				padding: 5px;
 			}
@@ -54,7 +54,6 @@
 	</head>
 	<body>
 		<script src="./functions_2.js"></script>
-		<!-- <script src="./calculator.js"></script> -->
 		<section>
 			<div class="container">
 				<div class="calculator">
@@ -64,7 +63,8 @@
 						<tr>
 							<td><button class="button" style="font-size: 18px;" onclick="clean()">clear</button></td>
 							<td><button class="button" style="font-size: 18px;" onclick="back()">back</button></td>
-							<td><button class="button" onclick="insert('/')">/</button></td>
+							<td><button class="button" onclick="insert('%')">%</button></td>
+							
 							<td><button class="button" onclick="insert('*')">*</button></td>
 						</tr>
 						<tr>
@@ -83,14 +83,16 @@
 							<td><button class="button" onclick="insert('1')">1</button></td>
 							<td><button class="button" onclick="insert('2')">2</button></td>
 							<td><button class="button" onclick="insert('3')">3</button></td>
-							<td rowspan="2"><button class="button" onclick="calculate()">=</button></td>
+							<td><button class="button" onclick="insert('/')">/</button></td>
+							
 						</tr>
 						<tr>
 						</tr>
 						</tr>
-							<td colspan="2"><button class="button" style="width: 107px;" >0</button></td>
+							<td><button class="button" onclick="insert('0')">0</button></td>
 							<td><button class="button" onclick="insert('.')">.</button></td>
-							<td><button class="button" onclick="insert(',')">,</button></td>
+							<td colspan="2"><button class="button" style="width: 107px;" onclick="calculate()">=</button></td>
+														
 						</tr>
 					</table>
 				</div>
@@ -103,10 +105,6 @@
 			}
 			function clean() {
 				document.getElementById('result').innerHTML = ""
-			}
-			function back() {
-				let result = document.getElementById('result').innerHTML
-				document.getElementById('result').innerHTML = result.substring(0, result.length -1)
 			}
 			function back() {
 				let result = document.getElementById('result').innerHTML
