@@ -392,12 +392,102 @@ function transformDegree(degree) {
 	let formula = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
 	let degreeSign = 'C';
 
-	return formula(updatedDegree) + degreeSign;
-
-	try {
-		transformDegree('50F');
-		transformDegree('50Z');
-	} catch (error) {
-		cpnsole.log(error.message);
+	if (celsiusExist) {
+		updatedDegree = Number(degree.toUpperCase().replace('C', ''));
+		formula = (celsius) => (celsius * 9) / 5 + 32;
+		degreeSign = 'F';
 	}
+
+	return formula(updatedDegree) + degreeSign;
 }
+try {
+	console.log(transformDegree('50F'));
+	console.log(transformDegree('50C'));
+} catch (error) {
+	console.log(error.message);
+}
+
+// books algorithm
+const booksByCategory = [
+	{
+		category: 'Rich',
+		books: [
+			{
+				title: 'The Secret of a Millionaire Mind',
+				author: 'T. Harv Eker',
+			},
+			{
+				title: 'The richest man in Babylon',
+				author: 'George S. Clason',
+			},
+			{
+				title: 'Rich dad, poor dad',
+				author: 'Robert T. Kiyosaki and Sharon L. Letcher',
+			},
+		],
+	},
+	{
+		category: 'Emotional Intelligence',
+		books: [
+			{
+				title: 'You are irreplaceable',
+				author: 'August Cury',
+			},
+			{
+				title: 'Anxiety - how to face the evil of the century ',
+				author: 'August Cury',
+			},
+			{
+				title: 'The 7 habits of highly effective people',
+				author: 'Stephen R. Covey',
+			},
+		],
+	},
+];
+
+const totalCategories = booksByCategory.length;
+console.log(totalCategories);
+
+for (let category of booksByCategory) {
+	console.log('Total of categories is:', category.books.length);
+}
+
+function countAuthors() {
+	let authors = [];
+	for (let category of booksByCategory) {
+		for (let book of category.books) {
+			if (authors.indexOf(book.author) == -1) {
+				authors.push(book.author);
+			}
+		}
+	}
+	console.log('Total of authors is:', authors.length);
+}
+countAuthors();
+
+function booksOfAugust() {
+	let books = [];
+	for (let category of booksByCategory) {
+		for (let book of category.books) {
+			if (book.author === 'August Cury') {
+				books.push(book.title);
+			}
+		}
+	}
+	console.log(`August' books: ${books}`);
+	console.log('August books: ', books);
+}
+booksOfAugust();
+
+function booksOfAuthor(author) {
+	let books = [];
+	for (let category of booksByCategory) {
+		for (let book of category.books) {
+			if (book.author === author) {
+				books.push(book.title);
+			}
+		}
+	}
+	console.log(`Books of: ${author} ${books.join(', ')}`);
+}
+booksOfAuthor('George S. Clason');
