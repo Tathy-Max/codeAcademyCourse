@@ -378,3 +378,26 @@ function matchStrings(pattern, source) {
 	return countMatches;
 }
 matchStrings('010', 'love');
+
+//transform C to F and vice versa
+function transformDegree(degree) {
+	const celsiusExist = degree.toUpperCase().includes('C');
+	const fahrenheitExist = degree.toUpperCase().includes('F');
+
+	if (!celsiusExist && !fahrenheitExist) {
+		throw new Error('Degree not exists');
+	}
+
+	let updatedDegree = Number(degree.toUpperCase().replace('F', ''));
+	let formula = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
+	let degreeSign = 'C';
+
+	return formula(updatedDegree) + degreeSign;
+
+	try {
+		transformDegree('50F');
+		transformDegree('50Z');
+	} catch (error) {
+		cpnsole.log(error.message);
+	}
+}
