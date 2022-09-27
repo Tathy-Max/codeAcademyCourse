@@ -491,3 +491,86 @@ function booksOfAuthor(author) {
 	console.log(`Books of: ${author} ${books.join(', ')}`);
 }
 booksOfAuthor('George S. Clason');
+
+//
+(() => {
+	let x = (y = 10);
+})();
+console.log(typeof x);
+console.log(typeof y);
+
+// ???
+[1, 2, 3].map((num) => {
+	if (typeof num === 'number') return;
+
+	return num * 2;
+});
+
+//
+function z() {
+	return (() => 0)();
+}
+typeof z();
+console.log(z);
+
+//
+var output = (function (g) {
+	delete g;
+	return g;
+})(0);
+console.log(output);
+
+//
+const obj = { prop: 12 };
+Object.preventExtensions(obj);
+console.log(Object.isExtensible(obj));
+
+//
+const obj1 = { property1: '10' };
+const obj2 = Object.freeze(obj1);
+obj2.property1 = '20';
+console.log(obj2.property1);
+
+//structural versus OOP
+let altura = 50;
+let largura = 60;
+
+function calcularArea() {
+	return altura * largura;
+}
+let area = calcularArea();
+console.log(area);
+
+class Poligono {
+	constructor(height, width) {
+		this.alt = height;
+		this.lar = width;
+	}
+
+	get area() {
+		return this.#calculateArea(); // Usar a # significa que a funcao nao estara visivel fora da classe (Encapsulation)
+	}
+
+	#calculateArea() {
+		return this.alt * this.lar;
+	}
+}
+
+let poligono = new Poligono(50, 60);
+console.log(poligono.area);
+// console.log(calculateArea(poligono)); Nao funciona pq e uma funcao que so esta disponivel dentro da classe (Encapsulation)
+
+//
+class Vehicle {
+	wheels = 4;
+
+	move(direction) {}
+	turn(direction) {}
+}
+
+class Motorcycle extends Vehicle {
+	constructor() {
+		super(); // will get all attributes and methods from Vehicle
+		this.wheels = 2;
+	}
+}
