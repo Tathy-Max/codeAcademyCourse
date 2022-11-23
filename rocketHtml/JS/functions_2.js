@@ -574,3 +574,169 @@ class Motorcycle extends Vehicle {
 		this.wheels = 2;
 	}
 }
+
+//independent function - recursion
+const factorial = (x) => {
+	if (x === 0) {
+		return 1;
+	}
+	return x * factorial(x - 1);
+};
+console.log(factorial(5));
+
+//array reverse ???
+const A = [4, 3, 2, 1];
+const B = [];
+
+function reverseArray(A) {
+	for (let i = 0; i < A.length; i--) {
+		if (A[i].length - 1) {
+			return B.push;
+		}
+	}
+}
+console.log(reverseArray(B));
+let numero = 10;
+function ti() {
+	let texto = '0' + numero;
+}
+
+//
+const arr = [7, 5, 9, 1];
+const value1 = Math.max.apply(null, arr);
+
+console.log(value1);
+
+//
+const obj11 = { Name: 'Hello', Age: 16 };
+const obj22 = { Name: 'Hello', Age: 16 };
+console.log(obj11 === obj22);
+
+//
+function solve(arr, rotations) {
+	if (rotations == 0) return arr;
+	for (let i = 0; i < rotations; i++) {
+		let element = arr.pop();
+		arr.unshift(element);
+	}
+	return arr;
+}
+console.log(arr);
+
+// infinity
+let g = Math.max();
+let h = Math.min();
+console.log(g);
+console.log(h);
+
+let arrr = [345435, 1, 744, 78899, 3e500];
+let smaller = Infinity;
+for (let nr of arrr) {
+	if (nr < smaller) smaller = nr;
+}
+console.log(smaller);
+
+// empty x
+const numberss = [1, 2, 3];
+numberss[10] = 11;
+console.log(numberss);
+
+// ???
+const set = new Set();
+set.add(5);
+set.add('Hello');
+set.add({ name: 'Scaler' });
+for (let item of set) {
+	console.log(item + 6);
+}
+
+//
+function testt(...args) {
+	console.log(typeof args);
+}
+testt(12);
+
+// diference between class and functions
+
+//1 - object
+const book = {
+	name: 'React Native',
+	publisher: 'House of Code',
+	pages: 185,
+	message: function () {
+		console.log('Alura recommends this book' + this.name + '!');
+	},
+};
+
+book.message();
+
+//2 - function exercendo papel de classe
+const book1 = function (name, publisher, pages) {
+	(gName = name), (gPublisher = publisher), (gPages = pages);
+
+	//methods
+	this.getName = function () {
+		return gName;
+	};
+	this.getPublisher = function () {
+		return gPublisher;
+	};
+	this.getPages = function () {
+		return gPages;
+	};
+};
+const graphQL = new book1('GraphQL', 'House of Code', 173);
+console.log(graphQL.getPublisher());
+
+//prototype
+const name2 = 'Alura';
+
+const temp = new String(name2);
+console.log(temp.toString());
+//const temp received a string, so string has prototypes, that is why when we use toString method using const name2 as a parameter, we receive the content of const name2
+
+//3 - class
+class Book2 {
+	// constructor receives parameters
+	contructor(name, publisher, pages) {
+		this.name = name;
+		this.publisher = publisher;
+		this.pages = pages;
+	}
+	//methods
+	typeTitle() {
+		console.log(`Title: $(this.name)`);
+	}
+	typeTitleDescription() {
+		console.log(
+			`${this.name} is a book of publisher ${this.publisher} and it has ${this.pages} pages`
+		);
+	}
+}
+
+const NodeJS = new Book2('NodeJS First Steps', 'House of Code', 195);
+
+NodeJS.typeTitle();
+NodeJS.typeTitleDescription();
+//classes are functions, but there are differences between them. Ex. classes can't be hoisted
+
+//4- Inheritance
+class BookCollection extends Book2 {
+	constructor(name, nameCollection) {
+		super(name); //super receives the proprety from the other class
+		this.nameCollection - nameCollection;
+	}
+
+	typeCollection() {
+		console.log(
+			`The book ${this.name} it is part of ${this.nameCollection} collection`
+		);
+	}
+}
+
+const ProgrammingLogic = new BookCollection(
+	'Programming Logic',
+	'Start Programming'
+);
+
+ProgrammingLogic.typeCollection();
