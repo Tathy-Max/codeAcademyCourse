@@ -1,13 +1,14 @@
-// get filter element
+// get filter element ??????
 const filterElement = document.querySelector('header input');
+console.log(filterElement);
 // get cards elements
 const cards = document.querySelectorAll('.cards li');
 // add input event for the filter element
-filterElement.addEventListener('input', filterCards);
+filterElement?.addEventListener('input', filterCards);
 // filter function
 function filterCards() {
 	// if the filter is not empty
-	if (filterElement.value != '') {
+	if (filterElement.value !== '') {
 		// for each card of cards
 		for (let card of cards) {
 			// get card heading (title)
